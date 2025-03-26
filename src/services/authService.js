@@ -1,5 +1,5 @@
 // src/services/authService.js
-import { signInAnonymously, onAuthStateChanged } from 'firebase/auth';
+import { signInAnonymously, onAuthStateChanged, updateProfile } from 'firebase/auth';
 import { auth } from './firebase';
 
 // Sign in anonymously
@@ -9,6 +9,23 @@ export const signInAnonymous = async () => {
     return userCredential.user;
   } catch (error) {
     console.error("Error signing in anonymously:", error);
+    throw error;
+  }
+};
+
+// Update user's display name
+export const updateUserDisplayName = async (displayName) => {
+  try {
+    const user = auth.currentUser;
+    if (!user) throw new Error('No authenticated user found');
+    
+    await updateProfile(user, {
+      displayName: displayName
+    });
+    
+    return true;
+  } catch (error) {
+    console.error("Error updating user display name:", error);
     throw error;
   }
 };
