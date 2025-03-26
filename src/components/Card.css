@@ -1,0 +1,67 @@
+.card {
+    width: 100px;
+    height: 140px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0 8px;
+    position: relative;
+    user-select: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .card.selectable {
+    cursor: pointer;
+  }
+  
+  .card.selectable:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card.selected {
+    transform: translateY(-20px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card-corner {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .top-left {
+    top: 8px;
+    left: 8px;
+  }
+  
+  .bottom-right {
+    bottom: 8px;
+    right: 8px;
+    transform: rotate(180deg);
+  }
+  
+  .card-value {
+    font-size: 16px;
+  }
+  
+  .card-suit {
+    font-size: 16px;
+  }
+  
+  .card-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-suit-large {
+    font-size: 48px;
+  }
+  

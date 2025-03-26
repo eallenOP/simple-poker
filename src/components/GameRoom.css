@@ -1,0 +1,123 @@
+.game-room {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .network-status {
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .network-status.online {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .network-status.offline {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .waiting-room {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .player-list {
+    margin: 20px 0;
+  }
+  
+  .player-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .player-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .start-game-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .start-game-btn:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+  
+  .game-board {
+    margin: 20px 0;
+  }
+  
+  .player-area {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .instructions, .waiting {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .instructions {
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .waiting {
+    background-color: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .back-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .loading, .error, .not-found {
+    text-align: center;
+    margin: 50px 0;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .loading {
+    background-color: #f8f9fa;
+  }
+  
+  .error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .not-found {
+    background-color: #f8f9fa;
+  }
+  

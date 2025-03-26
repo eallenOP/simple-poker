@@ -1,0 +1,69 @@
+.player-turn {
+    margin-bottom: 20px;
+  }
+  
+  .turn-tracker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+  }
+  
+  .player-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e9ecef;
+    min-width: 80px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .player-indicator.current-turn {
+    background-color: #007bff;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .player-indicator.current-user {
+    border: 2px solid #28a745;
+  }
+  
+  .player-indicator.exchanged {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .player-number {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .player-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .turn-message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #e2e3e5;
+    text-align: center;
+  }
+  
+  .turn-message p {
+    margin: 0;
+    font-weight: 500;
+  }
+  
