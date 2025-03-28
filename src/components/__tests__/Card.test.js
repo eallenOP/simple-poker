@@ -10,10 +10,10 @@ describe('Card Component', () => {
   it('renders correctly with proper suit and value', () => {
     render(<Card card={testCard} />);
     
-    // Hearts should be represented by ♥ symbol
+    // Hearts should be represented by ♥ symbol - use getAllByText since there are multiple
     expect(screen.getAllByText('♥').length).toBeGreaterThan(0);
     
-    // Card value should be displayed
+    // Card value should be displayed - use getAllByText since there are multiple
     expect(screen.getAllByText('A').length).toBeGreaterThan(0);
   });
   
@@ -56,7 +56,7 @@ describe('Card Component', () => {
   
   it('should call onSelect when clicked and selectable', () => {
     const onSelectMock = jest.fn();
-    render(
+    const { container } = render(
       <Card 
         card={testCard}
         selectable={true}
@@ -64,8 +64,8 @@ describe('Card Component', () => {
       />
     );
     
-    // Find the card element and click it
-    const cardElement = screen.getByText('♥').closest('.card');
+    // Find the card element directly from the container
+    const cardElement = container.firstChild;
     fireEvent.click(cardElement);
     
     expect(onSelectMock).toHaveBeenCalled();
@@ -73,7 +73,7 @@ describe('Card Component', () => {
   
   it('should not call onSelect when clicked but not selectable', () => {
     const onSelectMock = jest.fn();
-    render(
+    const { container } = render(
       <Card 
         card={testCard}
         selectable={false}
@@ -81,10 +81,31 @@ describe('Card Component', () => {
       />
     );
     
-    // Find the card element and click it
-    const cardElement = screen.getByText('♥').closest('.card');
+    // Find the card element directly from the container
+    const cardElement = container.firstChild;
     fireEvent.click(cardElement);
     
     expect(onSelectMock).not.toHaveBeenCalled();
+  });
+  
+  it('renders different suits correctly', () => {
+    // Test each suit
+    const suits = {
+      'hearts': 'red',
+      'diamonds': 'red',
+      'clubs': 'black',
+      'spades': 'black'
+    };
+    
+    for (const [suit, color] of Object.entries(suits)) {
+      const card = { suit, value: '10', id: `10_of_${suit}` };
+      const { container, unmount } = render(<Card card={card} />);
+      
+      // Check color based on suit
+      expect(container.firstChild).toHaveStyle({ color });
+      
+      // Clean up after each render
+      unmount();
+    }
   });
 });
