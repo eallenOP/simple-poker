@@ -1,6 +1,6 @@
 // src/components/__tests__/Card.test.js
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, fireEvent, screen, cleanup } from '@testing-library/react';
 import Card from '../Card';
 
 describe('Card Component', () => {
@@ -11,7 +11,7 @@ describe('Card Component', () => {
     render(<Card card={testCard} />);
     
     // Hearts should be represented by ♥ symbol
-    expect(screen.getAllByText('♥')).toHaveLength(2); // Two instances, one in each corner
+    expect(screen.getAllByText('♥')).toHaveLength(3); // Three instances: two in corners, one in center
     
     // Card value should be displayed
     expect(screen.getAllByText('A')).toHaveLength(2); // Two instances, one in each corner
@@ -65,7 +65,8 @@ describe('Card Component', () => {
     );
     
     // Find the card element and click it
-    const cardElement = screen.getByText('A').closest('.card');
+    // Need to use getAllByText since 'A' appears twice in the card
+    const cardElement = screen.getAllByText('A')[0].closest('.card');
     fireEvent.click(cardElement);
     
     expect(onSelectMock).toHaveBeenCalledWith(testCard);
@@ -82,7 +83,8 @@ describe('Card Component', () => {
     );
     
     // Find the card element and click it
-    const cardElement = screen.getByText('A').closest('.card');
+    // Need to use getAllByText since 'A' appears twice in the card
+    const cardElement = screen.getAllByText('A')[0].closest('.card');
     fireEvent.click(cardElement);
     
     expect(onSelectMock).not.toHaveBeenCalled();
@@ -102,10 +104,11 @@ describe('Card Component', () => {
       render(<Card card={card} />);
       
       // Check that the correct symbol is rendered
-      expect(screen.getAllByText(suitSymbol)).toHaveLength(2); // Two instances, one in each corner
+      expect(screen.getAllByText(suitSymbol)).toHaveLength(3); // Three instances: two in corners, one in center
       
-      // Cleanup
-      screen.unmount();
+      // Cleanup after each iteration
+      // Cleanup after each iteration
+      cleanup();
     }
   });
 });
